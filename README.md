@@ -1,4 +1,4 @@
-# Desafío - Like Me (P1)
+# Desafío - Like Me (P2)
 
 Descripción:
 La red social “Like Me” sigue desarrollando su plataforma y ahora necesita permitir la interacción de likes y la eliminación de posts.

@@ -1,95 +1,94 @@
-import { errorToast } from "../utils/toast";
-import { useState } from "react";
+import { errorToast } from '../utils/toast'
+import { useState } from 'react'
 
-export default function AddPost({ createPost }) {
+export default function AddPost ({ createPost }) {
   const [values, setValues] = useState({
-    titulo: "",
-    img: "",
-    descripcion: "",
-  });
+    titulo: '',
+    img: '',
+    descripcion: ''
+  })
 
   const handleChange = (e) => {
     setValues({
       ...values,
-      [e.target.name]: e.target.value,
-    });
-  };
+      [e.target.name]: e.target.value
+    })
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    const { titulo, img, descripcion } = values;
+    const { titulo, img, descripcion } = values
 
-    if (!titulo.trim() || !img.trim() || !descripcion.trim())
-      return errorToast("Todos los campos son obligatorios");
+    if (!titulo.trim() || !img.trim() || !descripcion.trim()) { return errorToast('Todos los campos son obligatorios')}
 
     const post = {
       titulo: titulo.trim(),
       img: img.trim(),
-      descripcion: descripcion.trim(),
-    };
+      descripcion: descripcion.trim()
+    }
 
-    createPost({ ...post });
+    createPost({ ...post })
 
     setValues({
-      titulo: "",
-      img: "",
-      descripcion: "",
-    });
-  };
+      titulo: '',
+      img: '',
+      descripcion: ''
+    })
+  }
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="mb-2">
+      <div className='mb-2'>
         <label
-          htmlFor="titulo"
-          className="form-label"
+          htmlFor='titulo'
+          className='form-label'
         >
           Titulo
         </label>
         <input
-          type="text"
-          className="form-control"
-          id="titulo"
-          name="titulo"
+          type='text'
+          className='form-control'
+          id='titulo'
+          name='titulo'
           onChange={handleChange}
           value={values.titulo}
         />
       </div>
-      <div className="mb-2">
+      <div className='mb-2'>
         <label
-          htmlFor="img"
-          className="form-label"
+          htmlFor='img'
+          className='form-label'
         >
           Imagen URL
         </label>
         <input
-          type="text"
-          className="form-control"
-          id="img"
-          name="img"
+          type='text'
+          className='form-control'
+          id='img'
+          name='img'
           onChange={handleChange}
           value={values.img}
         />
       </div>
-      <div className="mb-3">
+      <div className='mb-3'>
         <label
-          htmlFor="descripcion"
-          className="form-label"
+          htmlFor='descripcion'
+          className='form-label'
         >
           Descripcion
         </label>
         <textarea
-          id="descripcion"
-          className="form-control"
-          name="descripcion"
+          id='descripcion'
+          className='form-control'
+          name='descripcion'
           onChange={handleChange}
           value={values.descripcion}
         />
       </div>
       <button
-        type="submit"
-        className="btn btn-light mx-auto d-block"
+        type='submit'
+        className='btn btn-light mx-auto d-block'
         disabled={
           !values.titulo.trim() ||
           !values.img.trim() ||
@@ -99,5 +98,5 @@ export default function AddPost({ createPost }) {
         Agregar
       </button>
     </form>
-  );
+  )
 }
